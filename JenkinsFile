@@ -1,0 +1,44 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/ToTheSkiesAboveClouds/SoftwareTestingAssignment34.git'
+            }
+        }
+
+        stage('Install dependencies') {
+            steps {
+                bat 'pip install robotframework'
+                bat 'pip install seleniumlibrary'
+            }
+        }
+
+        stage('Run Chrome') {
+            steps {
+                bat 'robot -v BROWSER:Chrome tests.robot'
+            }
+        }
+
+        stage('Run Firefox') {
+            steps {
+                bat 'robot -v BROWSER:Firefox tests.robot'
+            }
+        }
+
+        stage('Run Safari') {
+            steps {
+                bat 'robot -v BROWSER:Safari tests.robot'
+            }
+        }
+    }
+
+    post {
+        always {
+            robot outputPath: '.', outputFileName: 'output.xml'
+        }
+    }
+}
