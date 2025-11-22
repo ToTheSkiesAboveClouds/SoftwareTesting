@@ -29,20 +29,20 @@ Open Browser On BrowserStack
         ${os_version}=    Set Variable    11
     END
 
-    ${bstack_options}=    Create Dictionary
-    ...    os=${os}
-    ...    osVersion=${os_version}
-    ...    buildName=RF Crossbrowser Build
-    ...    sessionName=DemoBlaze Tests
-
-    ${options}=    Create Dictionary
-    ...    browserName=${browser}
-    ...    browserVersion=latest
-    ...    bstack:options=${bstack_options}
+    ${caps}=    Set Variable    {
+    "bstack:options": {
+        "os": "${os}",
+        "osVersion": "${os_version}",
+        "buildName": "RF Crossbrowser Build",
+        "sessionName": "DemoBlaze Test"
+      },
+    "browserName": "${browser}",
+    "browserVersion": "latest"
+    }
 
     ${remote_url}=    Set Variable    https://${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}@hub-cloud.browserstack.com/wd/hub
 
-    Open Browser    ${URL}    remote_url=${remote_url}    options=${options}
+    Open Browser    ${URL}    browser=${browser}    remote_url=${remote_url}    desired_capabilities=${caps}
     Maximize Browser Window
 
 Close Browser Session
