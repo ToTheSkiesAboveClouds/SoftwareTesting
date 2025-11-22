@@ -22,23 +22,28 @@ Open Browser On BrowserStack
     ${browser}=    Set Variable    ${BS_BROWSER}
 
     IF    '${browser}' == 'safari'
-        ${platform}=    Set Variable    OS X Sonoma
+        ${os}=    Set Variable    OS X
+        ${os_version}=    Set Variable    Sonoma
     ELSE
-        ${platform}=    Set Variable    Windows 11
+        ${os}=    Set Variable    Windows
+        ${os_version}=    Set Variable    11
     END
 
-    ${caps}=    Create Dictionary
+    ${bstack_options}=    Create Dictionary
+    ...    os=${os}
+    ...    osVersion=${os_version}
+    ...    buildName=RF Crossbrowser Build
+    ...    sessionName=DemoBlaze Tests
+
+    ${options}=    Create Dictionary
     ...    browserName=${browser}
     ...    browserVersion=latest
-    ...    platformName=${platform}
-    ...    name=DemoBlaze Robot Test
-    ...    build=RF Crossbrowser Build
+    ...    bstack:options=${bstack_options}
 
     ${remote_url}=    Set Variable    https://${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}@hub-cloud.browserstack.com/wd/hub
 
-    Open Browser    ${URL}    remote_url=${remote_url}    options=${caps}
+    Open Browser    ${URL}    remote_url=${remote_url}    options=${options}
     Maximize Browser Window
-
 
 Close Browser Session
     Close Browser
