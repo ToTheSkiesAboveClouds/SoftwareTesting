@@ -17,7 +17,6 @@ ${PASSWORD}       awdmlg;213123
 
 
 *** Keywords ***
-
 Open Browser On BrowserStack
     ${browser}=    Set Variable    ${BS_BROWSER}
 
@@ -29,21 +28,13 @@ Open Browser On BrowserStack
         ${os_version}=    Set Variable    11
     END
 
-    ${caps}=    Set Variable    {
-    "bstack:options": {
-        "os": "${os}",
-        "osVersion": "${os_version}",
-        "buildName": "RF Crossbrowser Build",
-        "sessionName": "DemoBlaze Test"
-      },
-    "browserName": "${browser}",
-    "browserVersion": "latest"
-    }
+    ${caps}=    Set Variable    {"bstack:options": {"os": "${os}", "osVersion": "${os_version}", "buildName": "RF Crossbrowser Build", "sessionName": "DemoBlaze Test"}, "browserName": "${browser}", "browserVersion": "latest"}
 
     ${remote_url}=    Set Variable    https://${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}@hub-cloud.browserstack.com/wd/hub
 
     Open Browser    ${URL}    browser=${browser}    remote_url=${remote_url}    desired_capabilities=${caps}
     Maximize Browser Window
+
 
 Close Browser Session
     Close Browser
