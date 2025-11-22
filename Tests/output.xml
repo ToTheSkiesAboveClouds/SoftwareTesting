@@ -1,58 +1,490 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.12.3 on win32)" generated="2025-11-20T15:57:12.835638" rpa="false" schemaversion="5">
+<robot generator="Robot 7.3.2 (Python 3.12.3 on win32)" generated="2025-11-22T17:18:03.738718" rpa="false" schemaversion="5">
 <suite id="s1" name="Test" source="D:\SoftwareTesting\Tests\test.robot">
-<kw name="Open Browser To DemoBlaze" type="SETUP">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-11-20T15:57:13.017554" level="FAIL">Variable '${CAPS}' not found.</msg>
-<arg>${URL}</arg>
-<arg>${browser}</arg>
-<arg>remote_url=${REMOTE_URL}</arg>
-<arg>desired_capabilities=${CAPS}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="FAIL" start="2025-11-20T15:57:13.016516" elapsed="0.001038">Variable '${CAPS}' not found.</status>
+<kw name="Open Browser On BrowserStack" type="SETUP">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-11-22T17:18:04.083973" level="INFO">${caps} = {'browserName': 'chrome', 'browserVersion': 'latest', 'platformName': 'Windows 11', 'name': 'DemoBlaze Robot Test', 'build': 'RobotFramework Build'}</msg>
+<var>${caps}</var>
+<arg>browserName=${BS_BROWSER}</arg>
+<arg>browserVersion=${BS_BROWSER_VER}</arg>
+<arg>platformName=${BS_OS} ${BS_OS_VER}</arg>
+<arg>name=DemoBlaze Robot Test</arg>
+<arg>build=RobotFramework Build</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-11-22T17:18:04.082974" elapsed="0.000999"/>
 </kw>
-<status status="FAIL" start="2025-11-20T15:57:13.016516" elapsed="0.001038">Variable '${CAPS}' not found.</status>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-11-22T17:18:04.083973" level="INFO">${remote_url} = https://tothesky_9SuHMA:6rBkZAsYEGwB4LXsnyqJ@hub-cloud.browserstack.com/wd/hub</msg>
+<var>${remote_url}</var>
+<arg>https://${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}@hub-cloud.browserstack.com/wd/hub</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-11-22T17:18:04.083973" elapsed="0.000000"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:18:04.083973" level="WARN">desired_capabilities has been deprecated and removed. Please use options to configure browsers as per documentation.</msg>
+<msg time="2025-11-22T17:18:04.083973" level="INFO">Opening browser 'firefox' to base url 'https://www.demoblaze.com/' through remote server at 'https://tothesky_9SuHMA:6rBkZAsYEGwB4LXsnyqJ@hub-cloud.browserstack.com/wd/hub'.</msg>
+<msg time="2025-11-22T17:18:56.965937" level="INFO">C:\Python312\Lib\site-packages\selenium\webdriver\remote\remote_connection.py:419: UserWarning: Embedding username and password in URL could be insecure, use ClientConfig instead
+  headers = self.get_remote_connection_headers(parsed_url, self._client_config.keep_alive)</msg>
+<arg>${URL}</arg>
+<arg>remote_url=${remote_url}</arg>
+<arg>desired_capabilities=${caps}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-11-22T17:18:04.083973" elapsed="52.882879"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-11-22T17:18:56.966852" elapsed="1.599568"/>
+</kw>
+<status status="PASS" start="2025-11-22T17:18:04.081974" elapsed="54.484446"/>
 </kw>
 <test id="s1-t1" name="Sign Up" line="42">
-<status status="FAIL" start="2025-11-20T15:57:13.017554" elapsed="0.001001">Parent suite setup failed:
-Variable '${CAPS}' not found.</status>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:18:58.567420" level="INFO">Clicking element 'id=signin2'.</msg>
+<arg>id=signin2</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:18:58.566420" elapsed="1.587116"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-22T17:19:03.154784" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-22T17:19:00.153536" elapsed="3.001248"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=sign-username</arg>
+<arg>7s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-22T17:19:03.154784" elapsed="2.784933"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:19:05.940220" level="INFO">Typing text 'dasdmmkedfmk213213' into text field 'id=sign-username'.</msg>
+<arg>id=sign-username</arg>
+<arg>${USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:19:05.940220" elapsed="1.428770"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:19:07.369989" level="INFO">Typing text 'awdmlg;213123' into text field 'id=sign-password'.</msg>
+<arg>id=sign-password</arg>
+<arg>${PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:19:07.368990" elapsed="1.800761"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:19:09.170683" level="INFO">Clicking button 'xpath=//button[text()='Sign up']'.</msg>
+<arg>xpath=//button[text()='Sign up']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:19:09.170683" elapsed="2.955886"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-22T17:19:15.126932" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-22T17:19:12.126569" elapsed="3.000363"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Handle Alert" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:19:15.127972" level="INFO">HANDLE::&lt;class 'NoneType'&gt;::None</msg>
+<arg>action=ACCEPT</arg>
+<doc>Handles the current alert and returns its message.</doc>
+<status status="PASS" start="2025-11-22T17:19:15.126932" elapsed="1.068382"/>
+</kw>
+<arg>Handle Alert</arg>
+<arg>action=ACCEPT</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-11-22T17:19:15.126932" elapsed="1.068382"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-22T17:19:19.195703" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-22T17:19:16.195314" elapsed="3.000389"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:19:19.196712" level="INFO">Clicking element 'xpath=//div[@id='signInModal']//button[@class='close']'.</msg>
+<arg>xpath=//div[@id='signInModal']//button[@class='close']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:19:19.195703" elapsed="0.812887"/>
+</kw>
+<arg>Click Element</arg>
+<arg>xpath=//div[@id='signInModal']//button[@class='close']</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-11-22T17:19:19.195703" elapsed="0.812887"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-22T17:19:23.008853" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-22T17:19:20.008590" elapsed="3.000263"/>
+</kw>
+<doc>Create a new user account on DemoBlaze.</doc>
+<status status="PASS" start="2025-11-22T17:18:58.566420" elapsed="24.442433"/>
 </test>
-<test id="s1-t2" name="Log In" line="50">
-<status status="FAIL" start="2025-11-20T15:57:13.018555" elapsed="0.000000">Parent suite setup failed:
-Variable '${CAPS}' not found.</status>
+<test id="s1-t2" name="Log In" line="58">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:19:23.010865" level="INFO">Clicking element 'id=login2'.</msg>
+<arg>id=login2</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:19:23.009860" elapsed="0.871955"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=loginusername</arg>
+<arg>3s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-22T17:19:23.882817" elapsed="0.747317"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:19:24.631135" level="INFO">Typing text 'dasdmmkedfmk213213' into text field 'id=loginusername'.</msg>
+<arg>id=loginusername</arg>
+<arg>${USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:19:24.630134" elapsed="1.104931"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:19:25.735065" level="INFO">Typing text 'awdmlg;213123' into text field 'id=loginpassword'.</msg>
+<arg>id=loginpassword</arg>
+<arg>${PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:19:25.735065" elapsed="1.146633"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:19:26.882702" level="INFO">Clicking button 'xpath=//button[text()='Log in']'.</msg>
+<arg>xpath=//button[text()='Log in']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:19:26.881698" elapsed="2.207181"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>id=logout2</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-22T17:19:29.088879" elapsed="0.308746"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>✅ Successfully logged in!</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-11-22T17:19:29.397625" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Handle Alert" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:19:29.398651" level="INFO">HANDLE::&lt;class 'NoneType'&gt;::None</msg>
+<msg time="2025-11-22T17:20:27.471596" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-11-22T17:20:27.472596" level="FAIL">Alert not found in 5 seconds.</msg>
+<arg>action=ACCEPT</arg>
+<doc>Handles the current alert and returns its message.</doc>
+<status status="FAIL" start="2025-11-22T17:19:29.397625" elapsed="58.163009">Alert not found in 5 seconds.</status>
+</kw>
+<arg>Handle Alert</arg>
+<arg>action=ACCEPT</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-11-22T17:19:29.397625" elapsed="58.163009"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-22T17:20:30.561905" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-22T17:20:27.561640" elapsed="3.000265"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:20:30.562939" level="INFO">Clicking element 'xpath=//div[@id='signInModal']//button[@class='close']'.</msg>
+<msg time="2025-11-22T17:21:39.154663" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-11-22T17:21:39.154663" level="FAIL">ElementNotInteractableException: Message: Element &lt;button class="close" type="button"&gt; could not be scrolled into view; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementnotinteractableexception
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:202:5
+ElementNotInteractableError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:371:5
+webdriverClickElement@chrome://remote/content/marionette/interaction.sys.mjs:165:11
+interaction.clickElement@chrome://remote/content/marionette/interaction.sys.mjs:134:11
+clickElement@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:327:29
+receiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:210:31
+</msg>
+<arg>xpath=//div[@id='signInModal']//button[@class='close']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="FAIL" start="2025-11-22T17:20:30.562939" elapsed="68.640674">ElementNotInteractableException: Message: Element &lt;button class="close" type="button"&gt; could not be scrolled into view; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementnotinteractableexception
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:202:5
+ElementNotInteractableError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:371:5
+webdriverClickElement@chrome://remote/content/marionette/interaction.sys.mjs:165:11
+interaction.clickElement@chrome://remote/content/marionette/interaction.sys.mjs:134:11
+clickElement@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:327:29
+receiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:210:31
+</status>
+</kw>
+<arg>Click Element</arg>
+<arg>xpath=//div[@id='signInModal']//button[@class='close']</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-11-22T17:20:30.561905" elapsed="68.641708"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-22T17:21:42.203888" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-22T17:21:39.203613" elapsed="3.000275"/>
+</kw>
+<doc>Log in using the previously registered account.</doc>
+<status status="PASS" start="2025-11-22T17:19:23.009860" elapsed="139.194412"/>
 </test>
-<test id="s1-t3" name="Buy Product" line="59">
-<status status="FAIL" start="2025-11-20T15:57:13.019663" elapsed="0.000000">Parent suite setup failed:
-Variable '${CAPS}' not found.</status>
+<test id="s1-t3" name="Place Order" line="74">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:21:42.205579" level="INFO">Clicking element 'id=cartur'.</msg>
+<arg>id=cartur</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:21:42.205579" elapsed="1.920814"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//button[text()='Place Order']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-22T17:21:44.126393" elapsed="0.447308"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:21:44.574600" level="INFO">Clicking element 'xpath=//button[text()='Place Order']'.</msg>
+<arg>xpath=//button[text()='Place Order']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:21:44.574600" elapsed="1.243999"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-22T17:21:47.820769" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-22T17:21:45.818599" elapsed="2.002170"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:21:47.821778" level="INFO">Typing text 'gabennagibatoranime' into text field 'id=name'.</msg>
+<arg>id=name</arg>
+<arg>gabennagibatoranime</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:21:47.820769" elapsed="0.889367"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:21:48.710136" level="INFO">Typing text 'Kazakhstan' into text field 'id=country'.</msg>
+<arg>id=country</arg>
+<arg>Kazakhstan</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:21:48.710136" elapsed="1.290232"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:21:50.000368" level="INFO">Typing text 'Almaty' into text field 'id=city'.</msg>
+<arg>id=city</arg>
+<arg>Almaty</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:21:50.000368" elapsed="0.885146"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:21:50.885514" level="INFO">Typing text '4111111111111111' into text field 'id=card'.</msg>
+<arg>id=card</arg>
+<arg>4111111111111111</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:21:50.885514" elapsed="0.921552"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:21:51.808462" level="INFO">Typing text '12' into text field 'id=month'.</msg>
+<arg>id=month</arg>
+<arg>12</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:21:51.808462" elapsed="1.290064"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:21:53.099568" level="INFO">Typing text '2025' into text field 'id=year'.</msg>
+<arg>id=year</arg>
+<arg>2025</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:21:53.099568" elapsed="1.295629"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:21:54.396196" level="INFO">Clicking button 'xpath=//button[text()='Purchase']'.</msg>
+<arg>xpath=//button[text()='Purchase']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:21:54.395197" elapsed="1.959553"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-22T17:21:58.354990" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-22T17:21:56.354750" elapsed="2.000240"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Thank you for your purchase!</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-22T17:21:58.354990" elapsed="0.285986"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>💳 Order successfully placed!</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-11-22T17:21:58.640976" elapsed="0.001007"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:21:58.641983" level="INFO">Clicking button 'xpath=//button[text()='OK']'.</msg>
+<arg>xpath=//button[text()='OK']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:21:58.641983" elapsed="3.216866"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-22T17:22:03.860698" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-22T17:22:01.858849" elapsed="2.001849"/>
+</kw>
+<doc>Complete a purchase by filling out order details.</doc>
+<status status="PASS" start="2025-11-22T17:21:42.204272" elapsed="21.656426"/>
 </test>
-<test id="s1-t4" name="Place Order" line="70">
-<status status="FAIL" start="2025-11-20T15:57:13.019663" elapsed="0.001189">Parent suite setup failed:
-Variable '${CAPS}' not found.</status>
+<test id="s1-t4" name="Open And Close About Us" line="97">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:22:03.862707" level="INFO">Clicking element 'xpath=//a[text()='About us']'.</msg>
+<arg>xpath=//a[text()='About us']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:22:03.861708" elapsed="1.125468"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=videoModal</arg>
+<arg>5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-22T17:22:04.988385" elapsed="0.630003"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-22T17:22:07.618983" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-22T17:22:05.618388" elapsed="2.000595"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>🎬 'About Us' modal opened successfully.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-11-22T17:22:07.618983" elapsed="0.001019"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:22:07.620002" level="INFO">Clicking element 'xpath=//div[@id='videoModal']//button[@class='close']'.</msg>
+<arg>xpath=//div[@id='videoModal']//button[@class='close']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:22:07.620002" elapsed="1.183636"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-22T17:22:10.805542" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-22T17:22:08.804641" elapsed="2.000901"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>❎ 'About Us' modal closed successfully.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-11-22T17:22:10.805902" elapsed="0.000000"/>
+</kw>
+<doc>Open the 'About Us' modal and then close it.</doc>
+<status status="PASS" start="2025-11-22T17:22:03.861708" elapsed="6.944194"/>
 </test>
-<test id="s1-t5" name="Log Out" line="86">
-<status status="FAIL" start="2025-11-20T15:57:13.020852" elapsed="0.000000">Parent suite setup failed:
-Variable '${CAPS}' not found.</status>
+<test id="s1-t5" name="Buy Product" line="110">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:22:10.806912" level="INFO">Clicking element 'xpath=//a[text()='Laptops']'.</msg>
+<arg>xpath=//a[text()='Laptops']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:22:10.806912" elapsed="0.730423"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//a[text()='MacBook air']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-22T17:22:11.538340" elapsed="0.825071"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:22:12.364137" level="INFO">Clicking element 'xpath=//a[text()='MacBook air']'.</msg>
+<arg>xpath=//a[text()='MacBook air']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:22:12.364137" elapsed="1.953809"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//a[text()='Add to cart']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-22T17:22:14.317946" elapsed="2.777021"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:22:17.095941" level="INFO">Clicking element 'xpath=//a[text()='Add to cart']'.</msg>
+<arg>xpath=//a[text()='Add to cart']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:22:17.095941" elapsed="0.756155"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-11-22T17:22:20.852506" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-11-22T17:22:17.852096" elapsed="3.000410"/>
+</kw>
+<kw name="Handle Possible Alert">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Handle Alert" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:22:20.853548" level="INFO">HANDLE::&lt;class 'NoneType'&gt;::None</msg>
+<doc>Handles the current alert and returns its message.</doc>
+<status status="PASS" start="2025-11-22T17:22:20.853548" elapsed="1.262454"/>
+</kw>
+<msg time="2025-11-22T17:22:22.116002" level="INFO">${result} = ('PASS', 'Product added.')</msg>
+<var>${result}</var>
+<arg>Handle Alert</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-11-22T17:22:20.853548" elapsed="1.262454"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Alert handled or not present: ${result}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-11-22T17:22:22.116002" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-11-22T17:22:20.852506" elapsed="1.264483"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:22:22.116989" level="INFO">Clicking element 'id=cartur'.</msg>
+<arg>id=cartur</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:22:22.116989" elapsed="1.845803"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>MacBook air</arg>
+<arg>5s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-22T17:22:23.962792" elapsed="1.727060"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>🛒 Product successfully added to cart.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-11-22T17:22:25.689852" elapsed="0.001000"/>
+</kw>
+<doc>Add a product to the cart.</doc>
+<status status="PASS" start="2025-11-22T17:22:10.806912" elapsed="14.883940"/>
 </test>
-<kw name="Close Browser Session" type="TEARDOWN">
-<kw name="Close Browser" owner="SeleniumLibrary">
+<test id="s1-t6" name="Log Out" line="124">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-22T17:22:25.690852" level="INFO">Clicking element 'id=logout2'.</msg>
+<arg>id=logout2</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-22T17:22:25.690852" elapsed="1.923968"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>id=login2</arg>
+<arg>3s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-11-22T17:22:27.615838" elapsed="0.587395"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>👋 Logged out successfully.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-11-22T17:22:28.203233" elapsed="0.000000"/>
+</kw>
+<doc>Log out of the DemoBlaze account.</doc>
+<status status="PASS" start="2025-11-22T17:22:25.690852" elapsed="2.513974"/>
+</test>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-11-20T15:57:13.020852" elapsed="0.000000"/>
+<status status="PASS" start="2025-11-22T17:22:28.204826" elapsed="1.553453"/>
 </kw>
-<status status="PASS" start="2025-11-20T15:57:13.020852" elapsed="0.000000"/>
-</kw>
-<status status="FAIL" start="2025-11-20T15:57:12.837639" elapsed="0.185113">Suite setup failed:
-Variable '${CAPS}' not found.</status>
+<status status="PASS" start="2025-11-22T17:18:03.739717" elapsed="266.018562"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="5" skip="0">All Tests</stat>
+<stat pass="6" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="Test" id="s1" pass="0" fail="5" skip="0">Test</stat>
+<stat name="Test" id="s1" pass="6" fail="0" skip="0">Test</stat>
 </suite>
 </statistics>
 <errors>
+<msg time="2025-11-22T17:18:04.083973" level="WARN">desired_capabilities has been deprecated and removed. Please use options to configure browsers as per documentation.</msg>
 </errors>
 </robot>
