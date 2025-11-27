@@ -9,7 +9,7 @@ ${URL}            https://www.demoblaze.com/
 ${BROWSERSTACK_USERNAME}    tothesky_9SuHMA
 ${BROWSERSTACK_ACCESS_KEY}  6rBkZAsYEGwB4LXsnyqJ
 
-${BS_BROWSER}    ${BROWSER}
+${BS_BROWSER}    %{BROWSER}
 
 ${USERNAME}       dasdmmkedfmk213213
 ${PASSWORD}       awdmlg;213123
